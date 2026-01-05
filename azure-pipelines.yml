@@ -14,16 +14,16 @@ stages:
         - task: Npm@1
           inputs:
             command: 'install'
-            workingDir: '$(System.DefaultWorkingDirectory)/ReactTodoUIMonolith'
+            workingDir: '$(System.DefaultWorkingDirectory)'
 
         - task: Npm@1
           inputs:
             command: 'custom'
-            workingDir: '$(System.DefaultWorkingDirectory)/ReactTodoUIMonolith'
+            workingDir: '$(System.DefaultWorkingDirectory)'
             customCommand: 'run build'
 
         - task: PublishBuildArtifacts@1
           inputs:
-            PathtoPublish: '$(Build.ArtifactStagingDirectory)/ReactTodoUIMonolith/Build_Artifact'
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)/Build_Artifact'
             ArtifactName: 'Build_Artifact'
             publishLocation: 'Container'
