@@ -1,8 +1,29 @@
-trigger: none 
+trigger: none
 pool: Default
+stages:
+  - stage: 
+    jobs:
+      - job: 
+        steps:
+        - task: NodeTool@0
+          inputs:
+            versionSource: 'spec'
+            versionSpec: '16.x'
+            checkLatest: true
 
-steps: 
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: 'Write-Host "Hello World"'
+        - task: Npm@1
+          inputs:
+            command: 'install'
+            workingDir: '$(System.DefaultWorkingDirectory)/ReactTodoUIMonolith'
+
+        - task: Npm@1
+          inputs:
+            command: 'custom'
+            workingDir: '$(System.DefaultWorkingDirectory)/ReactTodoUIMonolith'
+            customCommand: 'run build'
+
+        - task: PublishBuildArtifacts@1
+          inputs:
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)/ReactTodoUIMonolith/Build_Artifact'
+            ArtifactName: 'Build_Artifact'
+            publishLocation: 'Container'
