@@ -1,5 +1,5 @@
 trigger: none
-pool: Default
+pool: satishagent
 stages:
   - stage: 
     jobs:
