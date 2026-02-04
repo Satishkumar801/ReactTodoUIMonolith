@@ -46,7 +46,7 @@ stages:
             buildType: 'current'
             downloadType: 'single'
             artifactName: 'mera_artifact'
-            downloadPath: '$(System.DefaultWorkingDirectory)/'
+            downloadPath: '$(System.DefaultWorkingDirectory)/build'
         - task: SSH@0
           inputs:
             sshEndpoint: 'frontend'
