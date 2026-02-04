@@ -41,6 +41,12 @@ stages:
     jobs:
       - job: 
         steps:
+        - task: DownloadBuildArtifacts@1
+          inputs:
+            buildType: 'current'
+            downloadType: 'single'
+            artifactName: 'mera_artifact'
+            downloadPath: '$(System.DefaultWorkingDirectory)/'
         - task: SSH@0
           inputs:
             sshEndpoint: 'frontend'
