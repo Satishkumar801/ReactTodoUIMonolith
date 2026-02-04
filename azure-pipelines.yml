@@ -36,3 +36,14 @@ stages:
             targetPath: '$(System.DefaultWorkingDirectory)/build'
             artifact: 'mera_artifact'
             publishLocation: 'pipeline'
+
+  - stage: copystage
+    jobs:
+      - job: 
+        steps:
+        - task: SSH@0
+          inputs:
+            sshEndpoint: 'frontend'
+            runOptions: 'inline'
+            inline: 'sudo cp -r /agent/_work/1/s/build/* /var/www/html'
+            readyTimeout: '20000'
