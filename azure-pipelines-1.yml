@@ -8,6 +8,10 @@ stages:
     jobs:
       - job: 
         steps:
+        - task: NodeTaskRunnerInstaller@0
+          displayName: nodeinstall
+          inputs:
+            nodeVersion: '16'
         - task: CmdLine@2
           displayName: npminstall
           inputs:
