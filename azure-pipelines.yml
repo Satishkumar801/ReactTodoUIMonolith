@@ -1,1 +1,12 @@
+trigger: none
 
+pool: default
+
+stages:
+    - stage: Build satege
+      displayName: Build stage
+      jobs:
+          - job: 
+            displayName: Dependencies
+            steps:
+                - 
