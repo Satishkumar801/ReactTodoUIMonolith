@@ -18,12 +18,19 @@ stages:
           inputs:
             script: 'npm install'
         - task: SonarQubePrepare@8
+          displayName: sonarqube sast tool
           inputs:
             SonarQube: 'SonarQube-may'
             scannerMode: 'cli'
             configMode: 'manual'
             cliProjectKey: 'Mar-2026_Mar-2026_f1bea657-ded8-4f72-b2b5-e9134aebf2ce'
-            cliSources: '.'
+            cliSources: 'React Todo Application'
+        - task: SonarQubeAnalyze@8
+          inputs:
+            jdkversion: 'JAVA_HOME_17_X64'
+        - task: SonarQubePublish@8
+          inputs:
+            pollingTimeoutSec: '300'
         - task: CmdLine@2
           displayName: npmbuild
           inputs:
