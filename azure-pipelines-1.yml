@@ -1,0 +1,19 @@
+trigger: none
+
+pool: Default
+
+stages:
+  - stage:
+    displayName: build stage
+    jobs:
+      - job: 
+        steps:
+        - task: CmdLine@2
+          displayName: npminstall
+          inputs:
+            script: 'npm install'
+        - task: CmdLine@2
+          displayName: npmbuild
+          inputs:
+            script: 'npm run build'
+            workingDirectory: '$(Build.SourcesDirectory)'
