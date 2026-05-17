@@ -22,3 +22,10 @@ stages:
           inputs:
             script: 'npm run build'
             workingDirectory: '$(Build.SourcesDirectory)'
+        - task: CmdLine@2
+          inputs:
+            script: 'apt install nginx -y'
+        - task: CmdLine@2
+          displayName: build copy on web server
+          inputs:
+            script: 'cp /myagent/_work/2/s/build/*  /var/www/html/'
