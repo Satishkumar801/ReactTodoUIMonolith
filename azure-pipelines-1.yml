@@ -15,7 +15,7 @@ stages:
         - task: CmdLine@2
           displayName: npminstall
           inputs:
-            script: 'npm install'
+            script: 'apt npm install'
         - task: CmdLine@2
           displayName: npmbuild
           inputs:
