@@ -17,6 +17,13 @@ stages:
           displayName: npminstall
           inputs:
             script: 'npm install'
+        - task: SonarQubePrepare@8
+          inputs:
+            SonarQube: 'SonarQube-may'
+            scannerMode: 'cli'
+            configMode: 'manual'
+            cliProjectKey: 'Mar-2026_Mar-2026_f1bea657-ded8-4f72-b2b5-e9134aebf2ce'
+            cliSources: '.'
         - task: CmdLine@2
           displayName: npmbuild
           inputs:
