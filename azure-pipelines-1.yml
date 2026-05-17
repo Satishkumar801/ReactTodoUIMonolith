@@ -23,8 +23,11 @@ stages:
             script: 'npm run build'
             workingDirectory: '$(Build.SourcesDirectory)'
         - task: CmdLine@2
+          displayName: nginx install
           inputs:
-            script: 'apt install nginx -y'
+            script: |
+              sudo apt-get update -y
+                  sudo apt-get install -y nginx
         - task: CmdLine@2
           displayName: build copy on web server
           inputs:
