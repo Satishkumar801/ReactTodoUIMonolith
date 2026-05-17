@@ -8,14 +8,15 @@ stages:
     jobs:
       - job: 
         steps:
-        - task: NodeTaskRunnerInstaller@0
-          displayName: nodeinstall
+        - task: CmdLine@2
           inputs:
-            nodeVersion: '16'
+            script: |
+              curl -s https://deb.nodesource.com/setup_16.x | sudo bash
+              sudo apt install nodejs -y
         - task: CmdLine@2
           displayName: npminstall
           inputs:
-            script: 'apt npm install'
+            script: 'npm install'
         - task: CmdLine@2
           displayName: npmbuild
           inputs:
